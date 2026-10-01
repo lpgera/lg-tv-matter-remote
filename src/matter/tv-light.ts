@@ -1,8 +1,8 @@
 import { DeviceTypeId, Endpoint, Environment, ServerNode, VendorId } from '@matter/main'
-import { DimmablePlugInUnitDevice } from '@matter/main/devices/dimmable-plug-in-unit'
+import { DimmableLightDevice } from '@matter/main/devices/dimmable-light'
 import type { LgTv } from '../lgtv/lg-tv.ts'
 
-export type TvPlugOptions = {
+export type TvLightOptions = {
   port: number
   passcode: number
   discriminator: number
@@ -22,10 +22,10 @@ export function brightnessToLevel(brightness: number): number {
 }
 
 /**
- * Exposes the TV as a Matter dimmable plug-in unit: on/off controls the TV power, the level
+ * Exposes the TV as a Matter dimmable light: on/off controls the TV power, the level
  * controls the panel brightness.
  */
-export async function createTvPlug(tv: LgTv, options: TvPlugOptions) {
+export async function createTvLight(tv: LgTv, options: TvLightOptions) {
   Environment.default.vars.set('storage.path', options.storagePath)
 
   const node = await ServerNode.create({
@@ -37,7 +37,7 @@ export async function createTvPlug(tv: LgTv, options: TvPlugOptions) {
     },
     productDescription: {
       name: 'LG TV',
-      deviceType: DeviceTypeId(DimmablePlugInUnitDevice.deviceType),
+      deviceType: DeviceTypeId(DimmableLightDevice.deviceType),
     },
     basicInformation: {
       vendorName: 'lpgera',
@@ -52,7 +52,7 @@ export async function createTvPlug(tv: LgTv, options: TvPlugOptions) {
     },
   })
 
-  const endpoint = new Endpoint(DimmablePlugInUnitDevice, {
+  const endpoint = new Endpoint(DimmableLightDevice, {
     id: 'tv',
     levelControl: {
       minLevel: MIN_LEVEL,

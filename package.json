@@ -1,7 +1,7 @@
 {
   "name": "lg-tv-matter-remote",
   "version": "1.0.0",
-  "description": "Exposes an LG webOS TV as a Matter dimmable plug-in unit (power + OLED brightness)",
+  "description": "Exposes an LG webOS TV as a Matter dimmable light (power + OLED brightness)",
   "homepage": "https://github.com/lpgera/lg-tv-matter-remote#readme",
   "bugs": {
     "url": "https://github.com/lpgera/lg-tv-matter-remote/issues"

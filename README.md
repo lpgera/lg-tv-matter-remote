@@ -1,6 +1,6 @@
 # lg-tv-matter-remote
 
-Exposes an LG webOS TV (tested target: OLED55B9, webOS 4.5) as a Matter **dimmable plug-in unit**, so it can be added to
+Exposes an LG webOS TV (tested target: OLED55B9, webOS 4.5) as a Matter **dimmable light**, so it can be added to
 any Matter controller:
 
 - **On/Off** → TV power (Wake-on-LAN to turn on, `ssap://system/turnOff` to turn off)
@@ -9,7 +9,7 @@ any Matter controller:
 Changes made with the TV remote are synced back to the controller.
 
 Matter's TV device types (Basic/Casting Video Player) have no brightness control and are supported by few
-controllers, so the TV shows up as a dimmable plug instead.
+controllers, so the TV shows up as a dimmable light instead.
 
 ## Requirements
 
