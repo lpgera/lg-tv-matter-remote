@@ -1,6 +1,6 @@
 import { config } from './config.ts'
 import { LgTv } from './lgtv/lg-tv.ts'
-import { createTvLight } from './matter/tv-light.ts'
+import { createTvPlug } from './matter/tv-plug.ts'
 
 const tv = new LgTv(config.tv)
 tv.on('prompt', () => console.log('[lgtv] Please accept the connection prompt on the TV'))
@@ -8,7 +8,7 @@ await tv.start()
 // Give the TV a moment so the initial Matter state reflects reality
 await tv.waitForConnection(5_000)
 
-const node = await createTvLight(tv, config.matter)
+const node = await createTvPlug(tv, config.matter)
 
 async function shutdown() {
   console.log('Shutting down')

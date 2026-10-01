@@ -1,19 +1,20 @@
 # lg-tv-matter-remote
 
-Exposes an LG webOS TV (tested target: OLED55B9, webOS 4.5) as a Matter **dimmable light**, so it can be added to
-an IKEA DIRIGERA hub (or any other Matter controller):
+Exposes an LG webOS TV (tested target: OLED55B9, webOS 4.5) as a Matter **dimmable plug-in unit**, so it can be added to
+any Matter controller:
 
 - **On/Off** → TV power (Wake-on-LAN to turn on, `ssap://system/turnOff` to turn off)
 - **Brightness** → the TV's _OLED Light_ picture setting (0–100)
 
 Changes made with the TV remote are synced back to the controller.
 
-Matter has no TV device type that DIRIGERA supports, which is why the TV shows up as a light.
+Matter's TV device types (Basic/Casting Video Player) have no brightness control and are supported by few
+controllers, so the TV shows up as a dimmable plug instead.
 
 ## Requirements
 
 - Node.js 24+ (runs the TypeScript sources natively, no build step)
-- The machine running this must be on the same network as the TV and the DIRIGERA hub (IPv6/mDNS must work)
+- The machine running this must be on the same network as the TV and the Matter controller (IPv6/mDNS must work)
 
 ## TV setup
 
@@ -50,9 +51,8 @@ Start the Matter device:
 npm start
 ```
 
-On first start a QR code and a manual pairing code are printed. In the IKEA Home smart app choose
-_Add device → Matter device_ and scan the QR code. The device uses a test vendor ID, so the app may warn that it is
-not certified.
+On first start a QR code and a manual pairing code are printed. Add a Matter device in your controller's app and scan
+the QR code or enter the manual code. The device uses a test vendor ID, so the app may warn that it is not certified.
 
 The TV client key and the Matter fabric data are stored in `./data` (configurable with `DATA_DIR`). Delete
 `data/matter` to reset the Matter pairing.
